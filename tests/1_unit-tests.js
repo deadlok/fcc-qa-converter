@@ -12,7 +12,5 @@ suite('Unit Tests', function(){
         assert.equal(convertHandler.getNum('2.5/10 lbs'), '0.25', 'should correctly read a fractional input with a decimal');
         assert.throws(()=>{convertHandler.getNum('2/5/10 lbs')}, Error, 'should return an error on double-fraction');
 
-        
-
     })
 });

@@ -116,7 +116,7 @@ function ConvertHandler() {
 
     console.log('result:' + result)
     if (result == NaN) throw new Error('invalid number')
-    else result = Math.round((result+Number.EPSILON)*10000)/10000;
+    else result = Math.round((result+Number.EPSILON)*100000)/100000;
 
     return result;
   };

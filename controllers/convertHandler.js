@@ -31,6 +31,8 @@ function ConvertHandler() {
     if (!result.match(/^gal|l|lbs|kg|mi|km$/))
       throw new Error("invalid unit")
 
+    if (result == 'l') result = 'L';
+
     console.log('getUnit: '+ result);
     return result;
   };
@@ -41,7 +43,7 @@ function ConvertHandler() {
       case 'gal':
         result = "L";
         break;
-      case 'l':
+      case 'L':
         result = "gal";
         break;
       case 'lbs':
@@ -70,7 +72,7 @@ function ConvertHandler() {
       case 'gal':
         result = "gallons";
         break;
-      case 'l':
+      case 'L':
         result = "liters";
         break;
       case 'lbs':
@@ -103,7 +105,7 @@ function ConvertHandler() {
       case 'gal':
         result = initNum*galToL;
         break;
-      case 'l':
+      case 'L':
         result = initNum/galToL;
         break;
       case 'lbs':
@@ -134,7 +136,7 @@ function ConvertHandler() {
     console.log(initNum +' '+ initUnit +' '+ returnNum +' '+ returnUnit)
     result =   initNum.toString() + ' ' + this.spellOutUnit(initUnit) 
              + ' converts to ' 
-             + returnNum.toString() + ' ' + this.spellOutUnit(returnUnit.toLowerCase());
+             + returnNum.toString() + ' ' + this.spellOutUnit(returnUnit);
 
     console.log('getString: ' + result)
     return result;

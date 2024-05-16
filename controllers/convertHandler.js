@@ -15,20 +15,23 @@ function ConvertHandler() {
     // eval the result to numeric
     result = eval(numStr) 
     if (result == NaN) throw new Error("invalid number");
+
+    console.log('getNum: '+ result);
     return result;
   };
   
   this.getUnit = function(input) {
     let result;
     let numStrLen = input.match(/^[0-9\/.]*/).toString().length;
-    console.log(numStrLen)
+    //console.log(numStrLen)
     result = input.substring(numStrLen,input.length).trim().toLowerCase();
-    console.log("unitStr: "+ result)
+    //console.log("unitStr: "+ result)
 
     // verify unit
     if (!result.match(/^gal|l|lbs|kg|mi|km$/))
       throw new Error("invalid unit")
 
+    console.log('getUnit: '+ result);
     return result;
   };
   
@@ -56,6 +59,8 @@ function ConvertHandler() {
       default:
         throw new Error('invalid unit')
     }
+
+    console.log('getReturnUnit: '+ result);
     return result;
   };
 
@@ -65,7 +70,7 @@ function ConvertHandler() {
       case 'gal':
         result = "gallons";
         break;
-      case 'L':
+      case 'l':
         result = "liters";
         break;
       case 'lbs':
@@ -83,6 +88,9 @@ function ConvertHandler() {
       default:
         throw new Error('invalid unit')
     }
+
+    console.log('spellOutUnit: '+ result);
+
     return result;
   };
   
@@ -114,18 +122,21 @@ function ConvertHandler() {
         throw new Error('invalid unit')
     }
 
-    console.log('result:' + result)
     if (result == NaN) throw new Error('invalid number')
     else result = Math.round((result+Number.EPSILON)*100000)/100000;
 
+    console.log('convert:' + result)
     return result;
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     let result;
+    console.log(initNum +' '+ initUnit +' '+ returnNum +' '+ returnUnit)
     result =   initNum.toString() + ' ' + this.spellOutUnit(initUnit) 
              + ' converts to ' 
-             + returnNum.toString() + ' ' + this.spellOutUnit(returnUnit);
+             + returnNum.toString() + ' ' + this.spellOutUnit(returnUnit.toLowerCase());
+
+    console.log('getString: ' + result)
     return result;
   };
   

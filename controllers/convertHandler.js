@@ -25,10 +25,10 @@ function ConvertHandler() {
     let numStrLen = input.match(/^[0-9\/.]*/).toString().length;
     //console.log(numStrLen)
     result = input.substring(numStrLen,input.length).trim().toLowerCase();
-    //console.log("unitStr: "+ result)
+    console.log("unitStr: '"+ result + "'")
 
     // verify unit
-    if (!result.match(/^[gal|l|lbs|kg|mi|km]$/))
+    if (!result.match(/^gal$|^l$|^lbs$|^kg$|^mi$|^km$/))
       throw new Error("invalid unit")
 
     if (result == 'l') result = 'L';

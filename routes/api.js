@@ -32,7 +32,7 @@ module.exports = function (app) {
     //console.log("errors:" + errs)
     if (errs.length > 1) res.json("invalid number and unit")
     else if (errs.length == 1) {
-      console.log(typeof(errs[0].message))
+      //console.log(typeof(errs[0].message))
       res.json(errs[0].message)
     }
     else {

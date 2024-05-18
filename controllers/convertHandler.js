@@ -16,16 +16,16 @@ function ConvertHandler() {
     result = eval(numStr) 
     if (result == NaN) throw new Error("invalid number");
 
-    console.log('getNum: '+ result);
+    //console.log('getNum: '+ result);
     return result;
   };
   
   this.getUnit = function(input) {
     let result;
     let numStrLen = input.match(/^[0-9\/.]*/).toString().length;
-    //console.log(numStrLen)
+
     result = input.substring(numStrLen,input.length).trim().toLowerCase();
-    console.log("unitStr: '"+ result + "'")
+    //console.log("unitStr: '"+ result + "'")
 
     // verify unit
     if (!result.match(/^gal$|^l$|^lbs$|^kg$|^mi$|^km$/))
@@ -33,7 +33,7 @@ function ConvertHandler() {
 
     if (result == 'l') result = 'L';
 
-    console.log('getUnit: '+ result);
+    //console.log('getUnit: '+ result);
     return result;
   };
   
@@ -62,7 +62,7 @@ function ConvertHandler() {
         throw new Error('invalid unit')
     }
 
-    console.log('getReturnUnit: '+ result);
+    //console.log('getReturnUnit: '+ result);
     return result;
   };
 
@@ -91,7 +91,7 @@ function ConvertHandler() {
         throw new Error('invalid unit')
     }
 
-    console.log('spellOutUnit: '+ result);
+    //console.log('spellOutUnit: '+ result);
 
     return result;
   };
@@ -127,18 +127,18 @@ function ConvertHandler() {
     if (result == NaN) throw new Error('invalid number')
     else result = Math.round((result+Number.EPSILON)*100000)/100000;
 
-    console.log('convert:' + result)
+    //console.log('convert:' + result)
     return result;
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     let result;
-    console.log(initNum +' '+ initUnit +' '+ returnNum +' '+ returnUnit)
+    //console.log(initNum +' '+ initUnit +' '+ returnNum +' '+ returnUnit)
     result =   initNum.toString() + ' ' + this.spellOutUnit(initUnit) 
              + ' converts to ' 
              + returnNum.toString() + ' ' + this.spellOutUnit(returnUnit);
 
-    console.log('getString: ' + result)
+    //console.log('getString: ' + result)
     return result;
   };
   

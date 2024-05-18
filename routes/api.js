@@ -30,9 +30,12 @@ module.exports = function (app) {
     }
     
     //console.log("errors:" + errs)
-    if (errs.length > 1) res.json("invalid number and unit")
-    else if (errs.length == 1) {
+    if (errs.length > 1) {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.json("invalid number and unit");
+    } else if (errs.length == 1) {
       //console.log(typeof(errs[0].message))
+      res.setHeader("Access-Control-Allow-Origin", "*");
       res.json(errs[0].message)
     }
     else {
@@ -48,6 +51,7 @@ module.exports = function (app) {
         returnUnit: returnUnit,
         string: returnStr
       }
+      res.setHeader("Access-Control-Allow-Origin", "*");
       res.json(result)
     }
   })
